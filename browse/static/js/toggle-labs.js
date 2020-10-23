@@ -14,6 +14,7 @@ $(document).ready(function() {
   var scripts = {
     "paperwithcode": $('#paperwithcode-toggle').data('script-url') + "?20210513",
     "connectedpapers": $('#connectedpapers-toggle').data('script-url'),
+    "plaudit": $('#plaudit-toggle').data('script-url'),
     "bibex": {
       "url": "https://static.arxiv.org/js/bibex/bibex.js?20210223",
       "container": "#bib-main"
@@ -43,6 +44,10 @@ $(document).ready(function() {
         }
         else if (key == "core-recommender-toggle") {
           $.cachedScript(scripts["core-recommender"]["url"]).done(function(script, textStatus) {
+            console.log(textStatus);
+          });
+        } else if (key == "plaudit-toggle") {
+          $.cachedScript(scripts["plaudit"]).done(function(script, textStatus) {
             console.log(textStatus);
           });
         } else if (key === "paperwithcode-toggle") {
@@ -102,6 +107,8 @@ $(document).ready(function() {
       }
     } else if ($(this).attr("id") == "core-recommender-toggle" && $(this).hasClass("enabled")) {
         $.cachedScript(scripts["core-recommender"]["url"]).done(function(script, textStatus) {});
+    } else if ($(this).attr("id") == "plaudit-toggle") {
+        $.cachedScript(scripts["plaudit"]).done(function(script, textStatus) {});
     } else if ($(this).attr("id") == "paperwithcode-toggle") {
       $.cachedScript(scripts["paperwithcode"]).done(function(script, textStatus) {
         console.log(textStatus);
